@@ -1,1 +1,0 @@
-/Users/johnbananas/.zshrc
