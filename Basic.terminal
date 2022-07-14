@@ -663,6 +663,8 @@
 	</data>
 	<key>CommandString</key>
 	<string>python3 ~/Downloads/BenRazProjects/TermAnim/Test.py</string>
+	<key>CursorType</key>
+	<integer>2</integer>
 	<key>Font</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
