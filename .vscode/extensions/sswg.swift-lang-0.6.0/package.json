@@ -1,0 +1,417 @@
+{
+	"name": "swift-lang",
+	"displayName": "Swift",
+	"description": "Swift Language Support for Visual Studio Code.",
+	"version": "0.6.0",
+	"publisher": "sswg",
+	"icon": "icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/swift-server/vscode-swift"
+	},
+	"engines": {
+		"vscode": "^1.65.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"keywords": [
+		"swift",
+		"sswg"
+	],
+	"preview": true,
+	"activationEvents": [
+		"onLanguage:swift",
+		"workspaceContains:Package.swift"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "swift.updateDependencies",
+				"title": "Update Package Dependencies",
+				"icon": "$(cloud-download)",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.resolveDependencies",
+				"title": "Resolve Package Dependencies",
+				"icon": "$(refresh)",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.cleanBuild",
+				"title": "Clean Build",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.resetPackage",
+				"title": "Reset Package Dependencies",
+				"icon": "$(clear-all)",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.runSingle",
+				"title": "Run Swift Script",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.useLocalDependency",
+				"title": "Use Local Version",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.editDependency",
+				"title": "Edit Locally",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.uneditDependency",
+				"title": "Revert To Original Version",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.openInWorkspace",
+				"title": "Add to Workspace",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.openExternal",
+				"title": "View Repository",
+				"category": "Swift"
+			},
+			{
+				"command": "swift.openPackage",
+				"title": "Open Package.swift",
+				"category": "Swift"
+			}
+		],
+		"configuration": [
+			{
+				"title": "Swift",
+				"properties": {
+					"swift.path": {
+						"type": "string",
+						"default": "",
+						"markdownDescription": "The path of the folder containing the Swift executables. The default is to look in **$PATH**.",
+						"order": 1
+					},
+					"swift.buildArguments": {
+						"type": "array",
+						"default": [],
+						"items": {
+							"type": "string"
+						},
+						"markdownDescription": "Arguments to pass to `swift build`. Keys and values should be provided as separate entries. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.",
+						"order": 2
+					},
+					"swift.testEnvironmentVariables": {
+						"type": "object",
+						"patternProperties": {
+							".*": {
+								"type": "string"
+							}
+						},
+						"default": {},
+						"markdownDescription": "Environment variables to set when running tests. To set environment variables when debugging an application you should edit the relevant `launch.json` configuration",
+						"order": 3
+					},
+					"swift.autoGenerateLaunchConfigurations": {
+						"type": "boolean",
+						"default": true,
+						"markdownDescription": "When loading a `Package.swift`, auto-generate `launch.json` configurations for running any executables.",
+						"order": 4
+					},
+					"swift.problemMatchCompileErrors": {
+						"type": "boolean",
+						"default": true,
+						"description": "List compile errors in the Problems View.",
+						"order": 5
+					},
+					"swift.excludePathsFromPackageDependencies": {
+						"description": "A list of paths to exclude from the Package Dependencies view.",
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"default": [
+							".git",
+							".github"
+						],
+						"order": 6
+					},
+					"swift.backgroundCompilation": {
+						"type": "boolean",
+						"default": false,
+						"markdownDescription": "**Experimental**: Run `swift build` in the background whenever a file is saved.",
+						"order": 7
+					},
+					"swift.buildPath": {
+						"type": "string",
+						"default": "",
+						"markdownDescription": "Path to the build directory passed to all swift package manager commands.",
+						"order": 8
+					}
+				}
+			},
+			{
+				"title": "Sourcekit-LSP",
+				"properties": {
+					"sourcekit-lsp.serverPath": {
+						"type": "string",
+						"markdownDescription": "The path of the `sourcekit-lsp` executable. The default is to look in the path where `swift` is found.",
+						"order": 1
+					},
+					"sourcekit-lsp.serverArguments": {
+						"type": "array",
+						"default": [],
+						"items": {
+							"type": "string"
+						},
+						"description": "Arguments to pass to Sourcekit-LSP. Argument keys and values should be provided as separate entries in the array e.g. ['--log-level', 'debug']",
+						"order": 2
+					},
+					"sourcekit-lsp.inlayHints.enabled": {
+						"type": "boolean",
+						"default": true,
+						"description": "Render inlay type annotations in the editor. Inlay hints require Swift 5.6 or later.",
+						"order": 3
+					},
+					"sourcekit-lsp.trace.server": {
+						"type": "string",
+						"default": "off",
+						"enum": [
+							"off",
+							"messages",
+							"verbose"
+						],
+						"description": "Traces the communication between VS Code and the SourceKit-LSP language server.",
+						"order": 4
+					}
+				}
+			},
+			{
+				"title": "Advanced",
+				"properties": {
+					"swift.swiftEnvironmentVariables": {
+						"type": "object",
+						"patternProperties": {
+							".*": {
+								"type": "string"
+							}
+						},
+						"default": {},
+						"markdownDescription": "Additional environment variables to pass to swift operations.",
+						"order": 1
+					},
+					"swift.runtimePath": {
+						"type": "string",
+						"default": "",
+						"description": "The path of the folder containing the Swift runtime libraries. Only effective when they can't be discovered by RPath.",
+						"order": 2
+					},
+					"swift.SDK": {
+						"type": "string",
+						"default": "",
+						"description": "The path of the SDK to compile against (`--sdk` parameter). The default SDK is determined by the environment on macOS and Windows.",
+						"order": 3
+					},
+					"swift.diagnostics": {
+						"type": "boolean",
+						"default": false,
+						"description": "Output additional diagnostics to the Swift Output View.",
+						"order": 100
+					}
+				}
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "swift.updateDependencies",
+					"when": "swift.hasPackage"
+				},
+				{
+					"command": "swift.resolveDependencies",
+					"when": "swift.hasPackage"
+				},
+				{
+					"command": "swift.cleanBuild",
+					"when": "swift.hasPackage"
+				},
+				{
+					"command": "swift.resetPackage",
+					"when": "swift.hasPackage"
+				},
+				{
+					"command": "swift.openPackage",
+					"when": "swift.hasPackage"
+				},
+				{
+					"command": "swift.useLocalDependency",
+					"when": "false"
+				},
+				{
+					"command": "swift.editDependency",
+					"when": "false"
+				},
+				{
+					"command": "swift.openInWorkspace",
+					"when": "false"
+				},
+				{
+					"command": "swift.uneditDependency",
+					"when": "false"
+				},
+				{
+					"command": "swift.openExternal",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "swift.updateDependencies",
+					"when": "view == packageDependencies",
+					"group": "navigation"
+				},
+				{
+					"command": "swift.resolveDependencies",
+					"when": "view == packageDependencies",
+					"group": "navigation"
+				},
+				{
+					"command": "swift.resetPackage",
+					"when": "view == packageDependencies",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "swift.useLocalDependency",
+					"when": "view == packageDependencies && viewItem == remote"
+				},
+				{
+					"command": "swift.uneditDependency",
+					"when": "view == packageDependencies && viewItem == editing"
+				},
+				{
+					"command": "swift.openInWorkspace",
+					"when": "view == packageDependencies && viewItem == editing"
+				},
+				{
+					"command": "swift.openInWorkspace",
+					"when": "view == packageDependencies && viewItem == local"
+				},
+				{
+					"command": "swift.openExternal",
+					"when": "view == packageDependencies && viewItem == remote"
+				}
+			]
+		},
+		"problemMatchers": [
+			{
+				"name": "swiftc",
+				"owner": "swift",
+				"source": "swiftc",
+				"fileLocation": [
+					"absolute"
+				],
+				"pattern": [
+					{
+						"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error|note):\\s+(.*)$",
+						"file": 1,
+						"line": 2,
+						"column": 3,
+						"severity": 4,
+						"message": 5
+					}
+				]
+			}
+		],
+		"taskDefinitions": [
+			{
+				"type": "swift",
+				"properties": {
+					"command": {
+						"description": "The command to execute. This should not contain any arguments as it will be quoted.",
+						"type": "string"
+					},
+					"args": {
+						"description": "An array of arguments for the command. Each argument will be quoted separately.",
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"cwd": {
+						"description": "The folder to run the task in.",
+						"type": "string"
+					}
+				},
+				"required": [
+					"command",
+					"args"
+				]
+			}
+		],
+		"views": {
+			"explorer": [
+				{
+					"id": "packageDependencies",
+					"name": "Package Dependencies",
+					"icon": "$(archive)",
+					"when": "swift.hasPackage"
+				}
+			]
+		}
+	},
+	"extensionDependencies": [
+		"vadimcn.vscode-lldb"
+	],
+	"scripts": {
+		"vscode:prepublish": "npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node16",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"compile": "tsc",
+		"watch": "tsc --watch",
+		"lint": "eslint ./ --ext ts && tsc --noEmit",
+		"format": "prettier --check src test",
+		"pretest": "npm run compile && npm run lint",
+		"test": "tsc -p ./ && node ./out/test/runTest.js",
+		"package": "vsce package",
+		"dev-package": "vsce package -o swift-lang-development.vsix"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.65.0",
+		"@typescript-eslint/eslint-plugin": "^5.1.0",
+		"@typescript-eslint/parser": "^5.1.0",
+		"@vscode/test-electron": "^1.6.2",
+		"esbuild": "^0.14.5",
+		"eslint": "^8.1.0",
+		"eslint-config-prettier": "^8.3.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.3",
+		"prettier": "2.5.1",
+		"typescript": "^4.4.4",
+		"vsce": "^2.6.3"
+	},
+	"dependencies": {
+		"@types/plist": "^3.0.2",
+		"plist": "^3.0.5",
+		"vscode-languageclient": "^8.0.0"
+	},
+	"__metadata": {
+		"id": "5fa1ecb0-4907-41e1-bdac-b3fc04bf1a23",
+		"publisherId": "8dd25c61-ee22-4e36-adb7-d146dbb8ff4d",
+		"publisherDisplayName": "Swift Server Work Group",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1655814534776
+	}
+}
