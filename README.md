@@ -1,5 +1,8 @@
 # Ben Raz dotfiles Repo
 Here there are all of my dotfiles, If you are interested in them.
+## Install
+To install these files, cd to the `DotFiles` directory and run
+`$ zsh setUp.sh`
 ## Git
 ### The `.gitconfig` File
 The `.gitconfig` file contains Git configuration information.
