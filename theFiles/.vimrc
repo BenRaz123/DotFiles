@@ -1,3 +1,4 @@
+colorscheme zellner
 start
 syntax on
 filetype indent on
