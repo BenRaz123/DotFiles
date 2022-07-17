@@ -1,5 +1,7 @@
+cd theFiles;
+brew bundle
 FILES=$PWD;
 cd ~;
-for entry in `ls -A $FILES/theFiles`; do
-    ln -s -F $FILES/theFiles/$entry ~/$entry;
+for entry in `ls -A $FILES`; do
+    ln -s -F $FILES/$entry ~/$entry;
 done
