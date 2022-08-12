@@ -1,3 +1,5 @@
+shopt -s extglob
+export NVIMRC="/Users/johnbananas/.config/nvim/init.vim"
 export BRP="/Users/johnbananas/Downloads/BenRazProjects/"
 alias startHacking="ls -lheiAFRGOST /"
 export PATH="$HOME/.cargo/bin:$PATH"

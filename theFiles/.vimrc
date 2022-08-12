@@ -1,4 +1,11 @@
+autocmd BufWritePost *.cpp execute '!g++ <afile>; ./a.out'
 autocmd BufWritePost *.tex execute '!pdflatex <afile>; open *.pdf'
+autocmd BufWritePost Scene.py execute '!manim -pqm <afile>; black <afile>'
+autocmd BufWritePost *.py execute '!python3 <afile>; black <afile>'
+autocmd BufWritePost *.md execute '!md-to-pdf <afile>; open *.pdf'
+
+colorscheme monokai
+
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ( ()<left>
@@ -13,9 +20,9 @@ filetype indent on
 set number
 set autoindent
 set smartindent
-set tabstop=3
+set tabstop=4
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 
 " Vim-Plug Stuff
 
@@ -24,6 +31,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Declare the list of plugins.
 
+Plug 'vim-autoformat/vim-autoformat'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'lithammer/nvim-pylance'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
 Plug 'junegunn/seoul256.vim'
 Plug 'sainnhe/sonokai'
