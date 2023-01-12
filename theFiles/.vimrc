@@ -1,9 +1,3 @@
-autocmd BufWritePost *.cpp execute '!g++ <afile>; ./a.out'
-autocmd BufWritePost *.tex execute '!pdflatex <afile>; open *.pdf'
-autocmd BufWritePost Scene.py execute '!manim -pqm <afile>; black <afile>'
-autocmd BufWritePost *.py execute '!python3 <afile>; black <afile>'
-autocmd BufWritePost *.md execute '!md-to-pdf <afile>; open *.pdf'
-
 colorscheme monokai
 
 inoremap " ""<left>
