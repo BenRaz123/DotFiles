@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/usr/share/vim/vim90/colors'
+let g:netrw_dirhist_7='/etc'
 let g:netrw_dirhist_6='/Users/johnbananas/Downloads/BenRazProjects/Programming/QuadraticFormulaSolver'
 let g:netrw_dirhist_5='/Volumes/XScreenSaver 6.04/Screen Savers/Unicrud.saver'
 let g:netrw_dirhist_4='/private/etc/cups/certs'

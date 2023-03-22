@@ -1,4 +1,4 @@
-colorscheme monokai
+colorscheme dracula 
 
 inoremap " ""<left>
 inoremap ' ''<left>
