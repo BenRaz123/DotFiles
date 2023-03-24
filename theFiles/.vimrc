@@ -1,4 +1,4 @@
-colorscheme dracula 
+colorscheme default 
 
 inoremap " ""<left>
 inoremap ' ''<left>
