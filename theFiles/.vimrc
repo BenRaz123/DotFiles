@@ -1,5 +1,4 @@
 colorscheme default 
-
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ( ()<left>
@@ -25,6 +24,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Declare the list of plugins.
 
+Plug 'turbio/bracey.vim'
+Plug 'mattn/emmet-vim'
 Plug 'vim-autoformat/vim-autoformat'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'lithammer/nvim-pylance'

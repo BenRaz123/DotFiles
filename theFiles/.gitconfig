@@ -3,3 +3,5 @@
 	email = 81690487+BenRaz123@users.noreply.github.com 
 [core]
 	excludesfile = /Users/johnbananas/.gitignore_global
+[pager]
+	branch = false
